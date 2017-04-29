@@ -18,6 +18,7 @@ namespace WeatherStation.UI
       var weatherApi = new WeatherApi();
 
       weatherStation.SetCities(weatherApi.GermanCities);
+      weatherStation.SetDailyAverageTemperatures(weatherApi.GermansDailyAverageTemperatures);
 
       Application.Run(weatherStation);
     }

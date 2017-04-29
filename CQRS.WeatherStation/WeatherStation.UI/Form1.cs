@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WeatherStation.ReadModel;
 
 namespace WeatherStation.UI
 {
@@ -20,6 +21,11 @@ namespace WeatherStation.UI
     public void SetCities(IReadOnlyList<string> cities)
     {
         this.cities.DataSource = cities;
+    }
+
+    internal void SetDailyAverageTemperatures(IReadOnlyList<DailyAverageTemperature> dailyAverageTemperatures)
+    {
+      this.dailyAverageTemperatures.DataSource = dailyAverageTemperatures;
     }
   }
 }

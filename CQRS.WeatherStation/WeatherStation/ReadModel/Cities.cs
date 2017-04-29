@@ -12,8 +12,8 @@ namespace WeatherStation.ReadModel
 {
   class Cities
   {
-    string CITIES_URL = ConfigurationManager.AppSettings["CitiesUri"];
-    string CITIES_API_KEY = ConfigurationManager.AppSettings["CitiesApiKey"];
+    string CITIES_URL = ConfigurationManager.AppSettings["WeatherStationUrl"];
+    string CITIES_API_KEY = ConfigurationManager.AppSettings["WeatherStationApiKey"];
 
     private RestClient _httpClient;
 
