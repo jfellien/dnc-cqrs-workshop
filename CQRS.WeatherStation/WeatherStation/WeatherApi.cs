@@ -8,9 +8,9 @@ using Jil;
 using System.Net;
 using System.Configuration;
 
-namespace WeatherStation.UI.Api
+namespace WeatherStation
 {
-  class WeatherApi
+  public class WeatherApi
   {
     string CITIES_URL = ConfigurationManager.AppSettings["CitiesUri"];
     string CITIES_API_KEY = ConfigurationManager.AppSettings["CitiesApiKey"];
