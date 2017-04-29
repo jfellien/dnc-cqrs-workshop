@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WeatherStation.UI
@@ -20,7 +17,7 @@ namespace WeatherStation.UI
       var weatherStation = new Form1();
       var weatherApi = new WeatherApi();
 
-      weatherStation.SetCities(weatherApi.Cities);
+      weatherStation.SetCities(weatherApi.GermanCities);
 
       Application.Run(weatherStation);
     }
