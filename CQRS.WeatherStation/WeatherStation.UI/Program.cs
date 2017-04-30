@@ -14,11 +14,10 @@ namespace WeatherStation.UI
       Application.EnableVisualStyles();
       Application.SetCompatibleTextRenderingDefault(false);
 
-      var weatherStation = new Form1();
+      var blankStationUI = new Form1();
       var weatherApi = new WeatherApi();
 
-      weatherStation.SetCities(weatherApi.GermanCities);
-      weatherStation.SetDailyAverageTemperatures(weatherApi.GermansDailyAverageTemperatures);
+      var weatherStation = WeatherStationUIController.InitUIWith(blankStationUI, weatherApi);
 
       Application.Run(weatherStation);
     }

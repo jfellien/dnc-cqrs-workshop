@@ -11,7 +11,7 @@ using WeatherStation.ReadModel;
 
 namespace WeatherStation.UI
 {
-  public partial class Form1 : Form
+  public partial class Form1 : Form, IAmTheWeatherStationUI
   {
     public Form1()
     {
@@ -23,7 +23,7 @@ namespace WeatherStation.UI
         this.cities.DataSource = cities;
     }
 
-    internal void SetDailyAverageTemperatures(IReadOnlyList<DailyAverageTemperature> dailyAverageTemperatures)
+    public void SetDailyAverageTemperatures(IReadOnlyList<DailyAverageTemperature> dailyAverageTemperatures)
     {
       this.dailyAverageTemperatures.DataSource = dailyAverageTemperatures;
     }

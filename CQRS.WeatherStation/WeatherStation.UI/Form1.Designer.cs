@@ -131,11 +131,13 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.groupBox3.Controls.Add(this.dailyAverageTemperatures);
-      this.groupBox3.Location = new System.Drawing.Point(19, 377);
+      this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.groupBox3.Location = new System.Drawing.Point(19, 400);
       this.groupBox3.Name = "groupBox3";
-      this.groupBox3.Size = new System.Drawing.Size(906, 437);
+      this.groupBox3.Size = new System.Drawing.Size(906, 414);
       this.groupBox3.TabIndex = 3;
       this.groupBox3.TabStop = false;
+      this.groupBox3.Text = "Durchschnittstemperaturen in DE pro Tag";
       // 
       // dailyAverageTemperatures
       // 
@@ -146,11 +148,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
       this.dailyAverageTemperatures.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
       this.dailyAverageTemperatures.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-      this.dailyAverageTemperatures.Location = new System.Drawing.Point(6, 24);
+      this.dailyAverageTemperatures.Location = new System.Drawing.Point(6, 54);
       this.dailyAverageTemperatures.Name = "dailyAverageTemperatures";
       this.dailyAverageTemperatures.ReadOnly = true;
       this.dailyAverageTemperatures.RowTemplate.Height = 33;
-      this.dailyAverageTemperatures.Size = new System.Drawing.Size(894, 407);
+      this.dailyAverageTemperatures.Size = new System.Drawing.Size(894, 354);
       this.dailyAverageTemperatures.TabIndex = 0;
       // 
       // Form1
