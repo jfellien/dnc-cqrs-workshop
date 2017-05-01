@@ -58,6 +58,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\TemperatureRecorder.cs" />
+    <Compile Include="Infrastructure\AzureEventStore.cs" />
+    <Compile Include="Infrastructure\WeatherStationEventHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReadModel\Cities.cs" />
     <Compile Include="ReadModel\DailyAverageTemperature.cs" />
@@ -65,12 +68,15 @@
     <Compile Include="WeatherApi.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\WeatherStation.Contracts\WeatherStation.Contracts.csproj">
+      <Project>{2d5a4f7d-7f23-465d-8a6e-ac1a3ee0ce77}</Project>
+      <Name>WeatherStation.Contracts</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Contracts\" />
-    <Folder Include="Domain\" />
+    <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

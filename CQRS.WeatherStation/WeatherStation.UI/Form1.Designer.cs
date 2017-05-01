@@ -36,9 +36,12 @@
       this.label2 = new System.Windows.Forms.Label();
       this.groupBox3 = new System.Windows.Forms.GroupBox();
       this.dailyAverageTemperatures = new System.Windows.Forms.DataGridView();
+      this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+      this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
       this.groupBox1.SuspendLayout();
       this.groupBox3.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.dailyAverageTemperatures)).BeginInit();
+      this.statusStrip1.SuspendLayout();
       this.SuspendLayout();
       // 
       // label1
@@ -77,7 +80,7 @@
       // temperatures
       // 
       this.temperatures.Location = new System.Drawing.Point(323, 107);
-      this.temperatures.Mask = "00.0";
+      this.temperatures.Mask = "###.#";
       this.temperatures.Name = "temperatures";
       this.temperatures.Size = new System.Drawing.Size(126, 38);
       this.temperatures.TabIndex = 5;
@@ -90,6 +93,7 @@
       this.save.TabIndex = 4;
       this.save.Text = "Speichern";
       this.save.UseVisualStyleBackColor = true;
+      this.save.Click += new System.EventHandler(this.save_Click);
       // 
       // label3
       // 
@@ -134,7 +138,7 @@
       this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.groupBox3.Location = new System.Drawing.Point(19, 400);
       this.groupBox3.Name = "groupBox3";
-      this.groupBox3.Size = new System.Drawing.Size(906, 414);
+      this.groupBox3.Size = new System.Drawing.Size(906, 405);
       this.groupBox3.TabIndex = 3;
       this.groupBox3.TabStop = false;
       this.groupBox3.Text = "Durchschnittstemperaturen in DE pro Tag";
@@ -152,14 +156,31 @@
       this.dailyAverageTemperatures.Name = "dailyAverageTemperatures";
       this.dailyAverageTemperatures.ReadOnly = true;
       this.dailyAverageTemperatures.RowTemplate.Height = 33;
-      this.dailyAverageTemperatures.Size = new System.Drawing.Size(894, 354);
+      this.dailyAverageTemperatures.Size = new System.Drawing.Size(894, 345);
       this.dailyAverageTemperatures.TabIndex = 0;
+      // 
+      // statusStrip1
+      // 
+      this.statusStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
+      this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statusLabel});
+      this.statusStrip1.Location = new System.Drawing.Point(0, 808);
+      this.statusStrip1.Name = "statusStrip1";
+      this.statusStrip1.Size = new System.Drawing.Size(937, 22);
+      this.statusStrip1.TabIndex = 4;
+      this.statusStrip1.Text = "statusStrip1";
+      // 
+      // statusLabel
+      // 
+      this.statusLabel.Name = "statusLabel";
+      this.statusLabel.Size = new System.Drawing.Size(0, 17);
       // 
       // Form1
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(19F, 37F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(937, 830);
+      this.Controls.Add(this.statusStrip1);
       this.Controls.Add(this.groupBox3);
       this.Controls.Add(this.groupBox1);
       this.Controls.Add(this.label1);
@@ -171,6 +192,8 @@
       this.groupBox1.PerformLayout();
       this.groupBox3.ResumeLayout(false);
       ((System.ComponentModel.ISupportInitialize)(this.dailyAverageTemperatures)).EndInit();
+      this.statusStrip1.ResumeLayout(false);
+      this.statusStrip1.PerformLayout();
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -187,6 +210,8 @@
     private System.Windows.Forms.GroupBox groupBox3;
     private System.Windows.Forms.MaskedTextBox temperatures;
     private System.Windows.Forms.DataGridView dailyAverageTemperatures;
+    private System.Windows.Forms.StatusStrip statusStrip1;
+    private System.Windows.Forms.ToolStripStatusLabel statusLabel;
   }
 }
 

@@ -12,14 +12,14 @@ namespace WeatherStation.ReadModel
 {
   class Cities
   {
-    string CITIES_URL = ConfigurationManager.AppSettings["WeatherStationUrl"];
-    string CITIES_API_KEY = ConfigurationManager.AppSettings["WeatherStationApiKey"];
+    string API_URI = ConfigurationManager.AppSettings["WeatherStationReadModelUri"];
+    string API_KEY = ConfigurationManager.AppSettings["WeatherStationReadModelApiKey"];
 
     private RestClient _httpClient;
 
     public Cities()
     {
-      _httpClient = new RestClient(CITIES_URL);
+      _httpClient = new RestClient(API_URI);
     }
 
     public IReadOnlyList<string> FromGermany()
@@ -27,7 +27,7 @@ namespace WeatherStation.ReadModel
       IReadOnlyList<string> cities;
 
       var request = new RestRequest("api/v1/cities/Germany", Method.GET);
-      request.AddHeader("x-functions-key", CITIES_API_KEY);
+      request.AddHeader("x-functions-key", API_KEY);
 
       var response = _httpClient.Execute(request);
 

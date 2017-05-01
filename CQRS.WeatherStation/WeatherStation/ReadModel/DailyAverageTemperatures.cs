@@ -13,14 +13,14 @@ namespace WeatherStation.ReadModel
   class DailyAverageTemperatures
   {
 
-    string AVERAGE_TEMPERATURES_URL = ConfigurationManager.AppSettings["WeatherStationUrl"];
-    string AVERAGE_TEMPERATURES_API_KEY = ConfigurationManager.AppSettings["WeatherStationApiKey"];
+    string API_URI = ConfigurationManager.AppSettings["WeatherStationReadModelUri"];
+    string API_KEY = ConfigurationManager.AppSettings["WeatherStationReadModelApiKey"];
 
     private RestClient _httpClient;
 
     public DailyAverageTemperatures()
     {
-      _httpClient = new RestClient(AVERAGE_TEMPERATURES_URL);
+      _httpClient = new RestClient(API_URI);
     }
 
     public IReadOnlyList<DailyAverageTemperature> OfGermany()
@@ -28,7 +28,7 @@ namespace WeatherStation.ReadModel
       IReadOnlyList<DailyAverageTemperature> temperatures;
 
       var request = new RestRequest("api/v1/germans-daily-average-temperature", Method.GET);
-      request.AddHeader("x-functions-key", AVERAGE_TEMPERATURES_API_KEY);
+      request.AddHeader("x-functions-key", API_KEY);
 
       var response = _httpClient.Execute(request);
 
