@@ -1,48 +1,73 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using RestSharp;
 using Jil;
 using System.Net;
 using System.Configuration;
+using WeatherStation.UI.Api.Contracts;
+using WeatherStation.UI.Api.Contracts.Commands;
+using WeatherStation.UI.Api.WriteModel;
+using WeatherStation.UI.Api.ReadModel;
 
 namespace WeatherStation.UI.Api
 {
   class WeatherApi
   {
-    string CITIES_URL = ConfigurationManager.AppSettings["CitiesUri"];
-    string CITIES_API_KEY = ConfigurationManager.AppSettings["CitiesApiKey"];
+    
+    private Cities _cities;
+    private TemperatureRecorder _temperatureRecorder;
+    private AverageTemperatures _averageTemperatures;
+    private Action<IReadOnlyList<DailyAverageTemperatureOfCity>> _refreshAverageTemperatures;
 
-    private RestClient _httpClient;
-    private List<string> _cities;
-
-    public WeatherApi()
+    public WeatherApi(TemperatureRecorder temperatureRecorder, Cities cities, AverageTemperatures averageTemperatures)
     {
-      _httpClient = new RestClient();
+      _temperatureRecorder = temperatureRecorder;
+      _cities = cities;
+      _averageTemperatures = averageTemperatures;
+
     }
     public IReadOnlyList<string> Cities
     {
       get {
-
-        if (_cities == null) {
-          _httpClient.BaseUrl = new Uri(CITIES_URL);
-          var request = new RestRequest("api/v1/cities", Method.GET);
-          request.AddHeader("x-functions-key", CITIES_API_KEY);
-
-          var response = _httpClient.Execute(request);
-
-          if (response.StatusCode == HttpStatusCode.OK) {
-            _cities = JSON.Deserialize<List<string>>(response.Content);
-          }
-          else {
-            _cities = new List<string>();
-          }
-        }
-
-        return _cities;
+        return _cities.All();
       }
+    }
+
+    //=========================================================
+    // Variationen des "Command Handlers"
+    //=========================================================
+
+    /// <summary>
+    /// Variante 1: Handle Methode mit Rückgabe
+    /// </summary>
+    /// <param name="command"></param>
+    /// <returns></returns>
+    public CommandResponse Handle(RecordTemperature command)
+    {
+      try {
+        _temperatureRecorder.Record(command.StationId, command.City, command.Temperature, command.TimeStamp);
+      }
+      catch (UnexpectedTemperatureDifference ex) {
+        return new FailureResponse(ex.Message);
+      }
+
+      _refreshAverageTemperatures(_averageTemperatures.All());
+
+      return new SuccessResponse("Temperatur wurde erfasst");
+    }
+
+    /// <summary>
+    /// Variante 2: 
+    /// </summary>
+    /// <returns></returns>
+    public object Methode()
+    {
+      return null;
+    }
+
+    internal void OnAverageTemperatureChanged(Action<IReadOnlyList<DailyAverageTemperatureOfCity>> refreshAverageTemperatures)
+    {
+      _refreshAverageTemperatures = refreshAverageTemperatures;
     }
   }
 }

@@ -64,7 +64,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\Contracts\CommandResponse.cs" />
+    <Compile Include="Api\Contracts\Commands\RecordTemperature.cs" />
+    <Compile Include="Api\Contracts\UnexpectedTemperatureDifference.cs" />
+    <Compile Include="Api\Projections\WeatherStationProjections.cs" />
+    <Compile Include="Api\ReadModel\AverageTemperatures.cs" />
+    <Compile Include="Api\ReadModel\Cities.cs" />
+    <Compile Include="Api\ReadModel\DailyAverageTemperatureOfCity.cs" />
     <Compile Include="Api\WeatherApi.cs" />
+    <Compile Include="Api\WriteModel\RecordedTemperature.cs" />
+    <Compile Include="Api\WriteModel\TemperatureRecorder.cs" />
+    <Compile Include="Api\WriteModel\Temperatures.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
